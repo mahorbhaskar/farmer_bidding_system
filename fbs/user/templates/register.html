@@ -1,11 +1,165 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="d-flex justify-content-center align-content-center h-100">
+  <form class="user-form">
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input
+        type="text"
+        name="firstName"
+        class="form-control"
+        id="firstname"
+        placeholder="Your First Name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input
+        type="text"
+        name="lastName"
+        class="form-control"
+        id="lastname"
+        placeholder="Your Last Name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile No.</label>
+      <input
+        type="number"
+        name="mobile"
+        class="form-control"
+        id="mobile"
+        placeholder="Enter Your Number To Register"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="Email"
+        aria-describedby="emailHelp"
+        placeholder="Enter a email"
+      />
+      <small id="emailHelp" class="form-text text-muted"
+        >Your email is secure with us.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        id="password"
+        placeholder="Enter a Strong Password"
+      />
+    </div>
+    <div class="form-group">
+      <label for="confirmPassword">Password</label>
+      <input
+        type="password"
+        name="confirmPassword"
+        class="form-control"
+        id="confirmPassword"
+        placeholder="Please confirm your password"
+      />
+    </div>
+    <div class="form-group d-flex justify-content-between">
+      <label for="gender">Gender</label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gender"
+          id="maleRadio"
+          value="male"
+        />
+        <label class="form-check-label" for="gender"> Male </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="gender"
+          id="femaleRadio"
+          value="female"
+        />
+        <label class="form-check-label" for="gender"> Female </label>
+      </div>
+    </div>
+    <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" name="dob" id="dob" />
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input
+        class="form-control"
+        type="text"
+        name="address"
+        id="address"
+        placeholder="House No, Street, landmark"
+        />
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <label for="city">City</label>
+            <input
+            class="form-control"
+            type="text"
+            name="city"
+            id="city"
+            placeholder="District"
+            />
+        </div>
+      <div class="col-md-6">
+          <label for="state">State</label>
+          <select class="form-control">
+              <option value="">Select your state..</option>
+              <option value="UttarPradesh">UttarPradesh</option>
+              <option value="Rajasthan">Rajasthan</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="form-group d-flex justify-content-between">
+      <label>what role do you wanna choose</label>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="is_farmer"
+          value="0"
+        />
+        <label class="form-check-label" for="is_farmer"> Consumer </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="radio"
+          name="is_farmer"
+          value="1"
+        />
+        <label class="form-check-label" for="is_farmer"> Farmer </label>
+      </div>
+    </div>
+    <!-- TODO: the checkbox ui -->
+      <!-- <div class="form-group form-check">
+      <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div> -->
+    <button type="submit" class="m-3 btn btn-primary nopad">Submit</button>
+  </form>
+</div>
 
-{% block content %}
-<h1>Register </h1>
-
-{% endblock %}
-
-{% block js%}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js" integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-{% endblock %}
+    {% endblock %} {% block js%}
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+      integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    {% endblock %}
+  </form>
+</div>
