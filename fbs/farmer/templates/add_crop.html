@@ -1,6 +1,53 @@
-{% extends 'base.html' %}
-{% load static %} 
-
-{% block content %}
-<h1>Add Crop</h1>
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container d-flex justify-content-center mt-lg-5">
+  <form class="user-form">
+    <div class="form-group">
+      <label for="cropType">Your Crop type</label>
+      <select class="form-check col-md-12" name="cropType">
+        <option value="">Choose a crop</option>
+        <option value="Wheat">Wheat</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="cropQuality">Crop Quanlity (In Kg.)</label>
+      <input
+        class="form-control"
+        type="text"
+        name="cropQuality"
+        placeholder="Mention your Crop quality"
+      />
+    </div>
+    <div class="form-group">
+      <label for="cropQuantity">Crop Quantity</label>
+      <input
+        class="form-control"
+        type="number"
+        name="cropQuatity"
+        placeholder="Mention your Crop quality"
+      />
+    </div>
+    <div class="form-group">
+      <label for="minBid">Minimum Bid</label>
+      <input
+        class="form-control"
+        type="number"
+        name="minBid"
+        placeholder="Give the min. value of your crop to start the bid"
+      />
+    </div>
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label for="startDate">Bid Starting Date</label>
+        <input class="form-control" type="date" name="startDate" />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="endDate">Bid End Date</label>
+        <input class="form-control" type="date" name="endDate" />
+      </div>
+    </div>
+    <button type="submit" class="m-3 btn sub-button py-3 px-4 nopad">
+      Submit
+    </button>
+  </form>
+</div>
 {% endblock %}
