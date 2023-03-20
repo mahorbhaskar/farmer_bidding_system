@@ -28,15 +28,14 @@ def user_register(request):
             is_farmer=request.POST.get("is_farmer")
             print("Data>>>>>>",first_name,last_name,password,mobile,address,state,city,gender,dob,is_farmer)
             data=logic.register_user(first_name,last_name,password,mobile,address,state,city,gender,dob,is_farmer)
-            return render(request, 'register.html')
+            if data:
+                return redirect(user_login)
+            else:
+                return render(request, 'register.html')
         else:
             return render(request, 'register.html')
-        
-        
-        
     except Exception as e:
         logger.error(f'{repr(e)} -->{request.user.username}')
-        return redirect("error404")
     
 def user_login(request):
     """

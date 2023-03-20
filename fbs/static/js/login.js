@@ -20,7 +20,7 @@ $("#login_form").validate({
     validClass: "validClass", //apply a css class for error if you have style for error
   
     submitHandler: function (form) {
-    //   form.submit();
+      form.submit();
     }
 });
   
