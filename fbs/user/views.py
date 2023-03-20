@@ -1,4 +1,5 @@
 from django.shortcuts import render,redirect
+from . import database_logic as logic
 import logging
 from django.contrib import auth,messages
 from django.contrib.auth.decorators import login_required
@@ -14,7 +15,24 @@ def user_register(request):
         ### register user
     """
     try:
-        return render(request, 'register.html')
+        if request.method == 'POST':
+            first_name=request.POST.get("firstName")
+            last_name=request.POST.get("lastName")
+            password=request.POST.get("password")
+            mobile=request.POST.get("mobile")
+            address=request.POST.get("address")
+            state=request.POST.get("state")
+            city=request.POST.get("city")
+            gender=request.POST.get("gender")
+            dob=request.POST.get("dob")
+            is_farmer=request.POST.get("is_farmer")
+            print("Data>>>>>>",first_name,last_name,password,mobile,address,state,city,gender,dob,is_farmer)
+            data=logic.register_user(first_name,last_name,password,mobile,address,state,city,gender,dob,is_farmer)
+            return render(request, 'register.html')
+        else:
+            return render(request, 'register.html')
+        
+        
         
     except Exception as e:
         logger.error(f'{repr(e)} -->{request.user.username}')
