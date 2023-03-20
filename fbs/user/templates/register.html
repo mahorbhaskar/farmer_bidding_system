@@ -1,28 +1,32 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <div class="d-flex justify-content-center align-content-center h-100">
-  <form class="user-form">
-    <div class="form-group">
-      <label for="firstname">First Name</label>
-      <input
-        type="text"
-        name="firstName"
-        class="form-control"
-        id="firstname"
-        placeholder="Your First Name"
-      />
+  <form class="user-form" method="post" action="{% url 'user_register' %}" id="user_register">
+    {% csrf_token %}
+    <div class="row" style="margin-top:20px ;">
+        <div class="form-group col-md-6">
+          <label for="firstname">First Name:<span class="text-danger">*</span></label>
+          <input
+            type="text"
+            name="firstName"
+            class="form-control"
+            id="firstname"
+            placeholder="Your First Name"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="lastname">Last Name<span class="text-danger">*</span></label>
+          <input
+            type="text"
+            name="lastName"
+            class="form-control"
+            id="lastname"
+            placeholder="Your Last Name"
+          />
+        </div>
     </div>
-    <div class="form-group">
-      <label for="lastname">Last Name</label>
-      <input
-        type="text"
-        name="lastName"
-        class="form-control"
-        id="lastname"
-        placeholder="Your Last Name"
-      />
-    </div>
-    <div class="form-group">
-      <label for="mobile">Mobile No.</label>
+
+    <div class="form-group" style="margin-top:10px ;">
+      <label for="mobile">Mobile No:<span class="text-danger">*</span></label>
       <input
         type="number"
         name="mobile"
@@ -31,43 +35,34 @@
         placeholder="Enter Your Number To Register"
       />
     </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        name="email"
-        class="form-control"
-        id="Email"
-        aria-describedby="emailHelp"
-        placeholder="Enter a email"
-      />
-      <small id="emailHelp" class="form-text text-muted"
-        >Your email is secure with us.</small
-      >
+
+    <div class="row" style="margin-top:10px ;">
+        <div class="form-group col-md-6">
+          <label for="password">Password:<span class="text-danger">*</span></label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter a Strong Password"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="confirmPassword">Confirm Password:<span class="text-danger">*</span></label>
+          <input
+            type="password"
+            name="confirmPassword"
+            class="form-control"
+            id="confirmPassword"
+            placeholder="Please confirm your password"
+          />
+        </div>
     </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        class="form-control"
-        id="password"
-        placeholder="Enter a Strong Password"
-      />
-    </div>
-    <div class="form-group">
-      <label for="confirmPassword">Password</label>
-      <input
-        type="password"
-        name="confirmPassword"
-        class="form-control"
-        id="confirmPassword"
-        placeholder="Please confirm your password"
-      />
-    </div>
-    <div class="form-group d-flex justify-content-between">
-      <label for="gender">Gender</label>
+
+    <div class="form-group justify-content-between" style="margin-top:10px ;">
+      <label for="gender" class="col-md-12">Gender:<span class="text-danger">*</span></label>
       <div class="form-check">
+          <label class="form-check-label" for="gender"> Male </label>
         <input
           class="form-check-input"
           type="radio"
@@ -75,9 +70,9 @@
           id="maleRadio"
           value="male"
         />
-        <label class="form-check-label" for="gender"> Male </label>
       </div>
       <div class="form-check">
+          <label class="form-check-label" for="gender"> Female </label>
         <input
           class="form-check-input"
           type="radio"
@@ -85,15 +80,16 @@
           id="femaleRadio"
           value="female"
         />
-        <label class="form-check-label" for="gender"> Female </label>
       </div>
     </div>
-    <div class="form-group">
-        <label for="dob">Date of Birth</label>
+
+    <div class="form-group" style="margin-top:10px ;">
+        <label for="dob">Date of Birth:</label>
         <input type="date" name="dob" id="dob" />
     </div>
-    <div class="form-group">
-        <label for="address">Address</label>
+
+    <div class="form-group" style="margin-top:10px ;">
+        <label for="address">Address:<span class="text-danger">*</span></label>
         <input
         class="form-control"
         type="text"
@@ -102,9 +98,20 @@
         placeholder="House No, Street, landmark"
         />
     </div>
+
     <div class="row">
+
         <div class="col-md-6">
-            <label for="city">City</label>
+            <label for="state">State<span class="text-danger">*</span></label>
+            <select class="form-control" name="state" >
+                <option value="">Select your state..</option>
+                <option value="UttarPradesh">UttarPradesh</option>
+                <option value="Rajasthan">Rajasthan</option>
+              </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="city">City<span class="text-danger">*</span></label>
             <input
             class="form-control"
             type="text"
@@ -113,35 +120,27 @@
             placeholder="District"
             />
         </div>
-      <div class="col-md-6">
-          <label for="state">State</label>
-          <select class="form-control">
-              <option value="">Select your state..</option>
-              <option value="UttarPradesh">UttarPradesh</option>
-              <option value="Rajasthan">Rajasthan</option>
-            </select>
-        </div>
     </div>
     
-    <div class="form-group d-flex justify-content-between">
-      <label>what role do you wanna choose</label>
+    <div class="form-group justify-content-between" style="margin-top:10px ;" >
+      <label class="col-md-12">What Role do you Wanna choose:<span class="text-danger">*</span></label>
       <div class="form-check">
+          <label class="form-check-label" for="is_farmer"> Consumer </label>
         <input
           class="form-check-input"
           type="radio"
           name="is_farmer"
           value="0"
         />
-        <label class="form-check-label" for="is_farmer"> Consumer </label>
       </div>
       <div class="form-check">
+          <label class="form-check-label" for="is_farmer"> Farmer </label>
         <input
           class="form-check-input"
           type="radio"
           name="is_farmer"
           value="1"
         />
-        <label class="form-check-label" for="is_farmer"> Farmer </label>
       </div>
     </div>
     <!-- TODO: the checkbox ui -->
@@ -155,10 +154,12 @@
 
     {% endblock %} {% block js%}
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
-      integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"
+    integrity="sha512-rstIgDs0xPgmG6RX1Aba4KV5cWJbAMcvRCVmglpam9SoHZiUCyQVDdH2LPlxoHtrv17XWblE/V/PP+Tr04hbtA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
     ></script>
+    <script type="text/javascript" src="/static/js/common.js" ></script>
+    <script type="text/javascript" src="/static/js/register.js" ></script>
     {% endblock %}
 </div>
