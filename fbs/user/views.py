@@ -24,10 +24,9 @@ def user_register(request):
             state=request.POST.get("state")
             city=request.POST.get("city")
             gender=request.POST.get("gender")
-            dob=request.POST.get("dob")
             is_farmer=request.POST.get("is_farmer")
-            print("Data>>>>>>",first_name,last_name,password,mobile,address,state,city,gender,dob,is_farmer)
-            data=logic.register_user(first_name,last_name,password,mobile,address,state,city,gender,dob,is_farmer)
+            print("Data>>>>>>",first_name,last_name,password,mobile,address,state,city,gender,is_farmer)
+            data=logic.register_user(first_name,last_name,password,mobile,address,state,city,gender,is_farmer)
             if data:
                 return redirect(user_login)
             else:
