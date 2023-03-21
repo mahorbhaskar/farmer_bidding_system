@@ -41,7 +41,7 @@ def user_login(request):
     Function is to use login for farmer & consumer both
     """
     try:
-        if(request.method == "POST"):
+        if request.method == "POST":
             is_valid = validate_user(request)
             if is_valid["success"]:
                 return redirect('home')
