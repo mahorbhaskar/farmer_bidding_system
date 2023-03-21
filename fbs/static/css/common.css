@@ -24,3 +24,15 @@ label {
 .sub-button {
   background-color: #41b3a3;
 }
+.nav-heading {
+  font-weight: 700;
+  font-size: larger;
+  color: black;
+}
+.SignIn-btn {
+  background-color: #e8a87c;
+  box-shadow: 0px 15px 10px -15px #111;
+}
+#SignIn {
+  color: #85dcb8;
+}
